@@ -1,7 +1,13 @@
 package webclient;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
 public class StartClass {
     public static void main(String[] args) {
-        System.out.println("Привет Мир");
+        SpringApplication.run(StartClass.class, args);
+        System.out.println("Hello world");
+
     }
 }
