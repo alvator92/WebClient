@@ -37,10 +37,10 @@
 
 - Подключить с помощью Maven необходимые зависимости.
 
-- Создать класс и метод Main, в котором должно запускаться Spring-приложение:
+- Создать класс и метод webclient.StartClass, в котором должно запускаться Spring-приложение:
 
 
-SpringApplication.run(Main.class, args);
+SpringApplication.run(webclient.StartClass.class, args);
 
 
 - Создать файл конфигурации application.yml
@@ -125,7 +125,7 @@ GET /api/post/my
 
 Используемая технология : React
 
-Подключить к приложению frontend, разместив содержимое архива “frontend-dist_XXXX-XX-XX.zip” в директории “resources”:
+Подключить к приложению webclient.frontend, разместив содержимое архива “webclient.frontend-dist_XXXX-XX-XX.zip” в директории “resources”:
 файлы из папки static в /resources/static/, а файл /resources/tempaltes/index.html - в директорию/resources/templates/.
 
     Сделать так, чтобы при входе на главную страницу открывался шаблон index.html 
