@@ -5,12 +5,14 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
+import org.springframework.context.annotation.ComponentScan;
 import webclient.backend.configuration.db.hibernate.HibernateConfig;
 
 import java.util.Iterator;
 import java.util.Map;
 
 @SpringBootApplication
+@ComponentScan(basePackages ="webclient.*")
 public class StartClass implements CommandLineRunner {
     @Autowired
     private JpaProperties jpaProperties;
@@ -31,14 +33,9 @@ public class StartClass implements CommandLineRunner {
         Iterator hmIterator = jpaProperties.getProperties().entrySet().iterator();
 
         while (hmIterator.hasNext()) {
-
             Map.Entry mapElement
                     = (Map.Entry)hmIterator.next();
-            int marks = ((int)mapElement.getValue() + 10);
-
-            // Printing mark corresponding to string entries
-            System.out.println(mapElement.getKey() + " : "
-                    + marks);
+            System.out.println(mapElement.getKey() + " : " + mapElement.getValue());
         }
     }
 }
