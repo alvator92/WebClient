@@ -21,6 +21,10 @@ import javax.sql.DataSource;
 @EnableTransactionManagement
 public class HibernateConfig {
 
+    /**
+     * Метод создает новый конфиг Hikari
+     * @return
+     */
     @Primary
     @Bean("masterHikariConfig")
     @ConfigurationProperties(prefix = "spring.datasource.hikari")
@@ -30,6 +34,11 @@ public class HibernateConfig {
     @Bean("masterDataSource")
     public DataSource masterDataSource() { return new HikariDataSource(masterHikariConfig());}
 
+    /**
+     * Созааем коннект к БД с помощью Hikari и Hibernate
+     * @param jpaProperties тянут из applicaton.yml
+     * @return entityManager
+     */
     @Primary
     @Bean
     @PersistenceUnit(name = "apossDataSource")
@@ -45,6 +54,11 @@ public class HibernateConfig {
         return entityManager;
     }
 
+    /**
+     * transactionManager
+     * @param emf EntityManager
+     * @return transactionManager
+     */
     @Bean("transactionManager")
     public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
