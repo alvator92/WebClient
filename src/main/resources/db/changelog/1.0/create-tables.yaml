@@ -1,6 +1,6 @@
 databaseChangeLog:
   - changeSet:
-      id: 1623004979160-1
+      id: 1623004979160-9
       author: Alvator
       changes:
         - createTable:
@@ -13,18 +13,34 @@ databaseChangeLog:
                   name: id
                   type: INT
               - column:
-                  constraints:
-                    nullable: false
                   name: code
-                  type: TINYTEXT
+                  type: VARCHAR(255)
               - column:
                   constraints:
                     nullable: false
-                  name: secret_code
-                  type: TINYTEXT
+                  name: email
+                  type: VARCHAR(255)
               - column:
                   constraints:
                     nullable: false
-                  name: time
+                  name: is_moderator
+                  type: TINYINT(3)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: password
+                  type: VARCHAR(255)
+              - column:
+                  name: photo
+                  type: TEXT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: reg_time
                   type: datetime
-            tableName: captcha_codes
+            tableName: users

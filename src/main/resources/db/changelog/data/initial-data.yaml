@@ -1,0 +1,46 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1623004979160-18
+      author: maksi (generated)
+      changes:
+        - loadData:
+            columns:
+              - column:
+                  header: id
+                  name: id
+                  type: NUMERIC
+              - column:
+                  header: code
+                  name: code
+                  type: skip
+              - column:
+                  header: email
+                  name: email
+                  type: STRING
+              - column:
+                  header: is_moderator
+                  name: is_moderator
+                  type: NUMERIC
+              - column:
+                  header: name
+                  name: name
+                  type: STRING
+              - column:
+                  header: password
+                  name: password
+                  type: STRING
+              - column:
+                  header: photo
+                  name: photo
+                  type: STRING
+              - column:
+                  header: reg_time
+                  name: reg_time
+                  type: STRING
+            commentLineStartsWith: '#'
+            encoding: UTF-8
+            file: data/users.csv
+            quotchar: '"'
+            separator: ','
+            tableName: users
+            relativeToChangelogFile: true
