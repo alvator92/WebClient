@@ -38,3 +38,6 @@ spring:
       hibernate.show_slq: false
       hibernate.use_sql_comments: true
       hibernate.physical_naming_strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  liquibase:
+    change-log: 'classpath:db/changelog/db.changelog-master.yaml'
+    enabled: true

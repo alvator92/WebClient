@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1623004979160-1
+      author: Alvator
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: code
+                  type: TINYTEXT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: secret_code
+                  type: TINYTEXT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: time
+                  type: datetime
+            tableName: captcha_codes
