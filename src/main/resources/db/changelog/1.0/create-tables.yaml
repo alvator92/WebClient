@@ -1,6 +1,6 @@
 databaseChangeLog:
   - changeSet:
-      id: 1623004979160-9
+      id: 1623004979160-1
       author: Alvator
       changes:
         - createTable:
@@ -44,3 +44,87 @@ databaseChangeLog:
                   name: reg_time
                   type: datetime
             tableName: users
+  - changeSet:
+      id: 1623004979160-2
+      author: Alvator
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                    unique: true
+                  name: product_code
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name_of_product
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: product_category
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: container
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: stop_list
+                  type: boolean
+              - column:
+                  constraints:
+                    nullable: false
+                  name: shelf_life
+                  type: datetime
+            tableName: products
+  - changeSet:
+      id: 1623004979160-3
+      author: Alvator
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: product_code
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name_of_product
+                  type: VARCHAR(255)
+            tableName: clients
+  - changeSet:
+      id: 1623004979160-4
+      author: Alvator
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: product_code
+            baseTableName: clients
+            constraintName: FK_product_code
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: products
+            validate: true

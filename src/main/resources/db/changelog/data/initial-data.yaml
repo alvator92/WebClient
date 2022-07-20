@@ -1,7 +1,7 @@
 databaseChangeLog:
   - changeSet:
       id: 1623004979160-18
-      author: maksi (generated)
+      author: Alvator
       changes:
         - loadData:
             columns:
