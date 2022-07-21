@@ -11,7 +11,6 @@ import java.util.Date;
 @Data
 public class User {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
@@ -42,5 +41,4 @@ public class User {
     public Role getRole() {
         return isModerator ? Role.MODERATOR : Role.USER;
     }
-
 }

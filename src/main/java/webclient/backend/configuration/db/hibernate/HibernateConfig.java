@@ -7,6 +7,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -19,6 +20,8 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableTransactionManagement
+@EnableJpaRepositories( basePackages = "webclient.backend.configuration",
+                        entityManagerFactoryRef = "apossEntity")
 public class HibernateConfig {
 
     /**
@@ -36,7 +39,7 @@ public class HibernateConfig {
 
     /**
      * Созааем коннект к БД с помощью Hikari и Hibernate
-     * @param jpaProperties тянут из applicaton.yml
+     * @param jpaProperties тянут из application.yml
      * @return entityManager
      */
     @Primary
