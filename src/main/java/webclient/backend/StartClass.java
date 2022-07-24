@@ -1,4 +1,4 @@
-package webclient;
+package webclient.backend;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,23 +11,21 @@ import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import webclient.backend.common.Common;
-import webclient.backend.common.Utils;
 import webclient.backend.configuration.db.hibernate.HibernateConfig;
 import webclient.backend.model.Clients;
-import webclient.backend.repositories.UserRepository;
 
-import javax.persistence.Entity;
-import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Map;
 
 @SpringBootApplication
-//@ComponentScan(basePackages = {"webclient.*", "webclient.backend.configuration.db"})
+@ComponentScan(basePackages = {"webclient.backend.*"})
 @ConfigurationPropertiesScan("webclient.backend.configuration")
-//@EntityScan(basePackages = "webclient.backend.configuration.model")
+@EntityScan(basePackages = "webclient.backend.*")
+//@EnableJpaRepositories( basePackages = "webclient.backend.repositories")
 @Slf4j
 public class StartClass implements CommandLineRunner {
+
     @Autowired
     private JpaProperties jpaProperties;
 
@@ -36,8 +34,9 @@ public class StartClass implements CommandLineRunner {
     public static void main(String[] args) {
 
         ApplicationContext ctx = SpringApplication.run(StartClass.class, args);
-//        ctx.getBean("Clients", Clients.class);
+//        System.out.println(ctx.getBean("Clients", Clients.class));
         System.out.println("Hello world");
+        System.out.println(Arrays.asList(ctx.getBeanDefinitionNames()));
 
     }
 

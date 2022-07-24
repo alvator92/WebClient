@@ -20,8 +20,8 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories( basePackages = "webclient.backend.configuration",
-                        entityManagerFactoryRef = "apossEntity")
+//@EnableJpaRepositories( basePackages = {"webclient.backend.repositories"},
+//                        entityManagerFactoryRef = "apossEntity")
 public class HibernateConfig {
 
     /**
@@ -43,13 +43,13 @@ public class HibernateConfig {
      * @return entityManager
      */
     @Primary
-    @Bean
+    @Bean("apossEntityManager")
     @PersistenceUnit(name = "apossDataSource")
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(JpaProperties jpaProperties) {
         HibernateJpaVendorAdapter hibernateJpaVendorAdapter = new HibernateJpaVendorAdapter();
 
         LocalContainerEntityManagerFactoryBean entityManager = new LocalContainerEntityManagerFactoryBean();
-        entityManager.setPackagesToScan(new String[] { "webclient.backend.configuration.db" });
+        entityManager.setPackagesToScan(new String[] { "webclient.backend.*" });
         entityManager.setPersistenceUnitName("apossDataSource");
         entityManager.setDataSource(masterDataSource());
         entityManager.setJpaPropertyMap(jpaProperties.getProperties());
@@ -62,7 +62,7 @@ public class HibernateConfig {
      * @param emf EntityManager
      * @return transactionManager
      */
-    @Bean("transactionManager")
+    @Bean("apossTransactionManager")
     public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(emf);
