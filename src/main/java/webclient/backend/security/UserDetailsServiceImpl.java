@@ -10,20 +10,22 @@ import webclient.backend.model.User;
 import webclient.backend.repositories.UserRepository;
 
 @Service
-@RequiredArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
-//    @Autowired
-//    public UserDetailsServiceImpl(UserRepository userRepository) {
-//        this.userRepository = userRepository;
-//    }
+    @Autowired
+    public UserDetailsServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
   public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
     // TODO: 12.09.2021 сделать Optional
-    User user = userRepository.findByEmail(email);
+    final User user = userRepository.findByEmail(email);
+    if (user == null) {
+        throw new UsernameNotFoundException(email);
+    }
     return SecurityUser.fromUser(user);
   }
 }
