@@ -44,3 +44,45 @@ databaseChangeLog:
             separator: ','
             tableName: users
             relativeToChangelogFile: true
+  - changeSet:
+      id: 1623004979160-19
+      author: Alvator
+      changes:
+        - loadData:
+            columns:
+              - column:
+                  header: id
+                  name: id
+                  type: NUMERIC
+              - column:
+                  header: name
+                  name: name
+                  type: STRING
+            commentLineStartsWith: '#'
+            encoding: UTF-8
+            file: data/roles.csv
+            quotchar: '"'
+            separator: ','
+            tableName: roles
+            relativeToChangelogFile: true
+  - changeSet:
+      id: 1623004979160-20
+      author: Alvator
+      changes:
+        - loadData:
+            columns:
+              - column:
+                  header: user_id
+                  name: user_id
+                  type: NUMERIC
+              - column:
+                  header: role_id
+                  name: role_id
+                  type: NUMERIC
+            commentLineStartsWith: '#'
+            encoding: UTF-8
+            file: data/user_roles.csv
+            quotchar: '"'
+            separator: ','
+            tableName: user_roles
+            relativeToChangelogFile: true
