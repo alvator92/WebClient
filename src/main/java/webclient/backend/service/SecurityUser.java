@@ -1,4 +1,4 @@
-package webclient.backend.security;
+package webclient.backend.service;
 
 import lombok.Data;
 import org.springframework.context.annotation.Configuration;
@@ -52,7 +52,7 @@ public class SecurityUser implements UserDetails {
     return true;
   }
 
-  public static UserDetails fromUser(User user) {
+  public static UserDetails fromUser(User user, Set<GrantedAuthority> grantedAuthorities) {
     return new org.springframework.security.core.userdetails.User(
         user.getEmail(),
         user.getPassword(),
@@ -60,7 +60,9 @@ public class SecurityUser implements UserDetails {
         true,
         true,
         true,
-        user.getRole().getAuthority()
+//            grantedAuthorities
+            user.getRole().getAuthority()
+
     );
   }
 }

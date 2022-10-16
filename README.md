@@ -37,10 +37,10 @@
 
 - Подключить с помощью Maven необходимые зависимости.
 
-- Создать класс и метод webclient.StartClass, в котором должно запускаться Spring-приложение:
+- Создать класс и метод webclient.backend.StartClass, в котором должно запускаться Spring-приложение:
 
 
-SpringApplication.run(webclient.StartClass.class, args);
+SpringApplication.run(webclient.backend.StartClass.class, args);
 
 
 - Создать файл конфигурации application.yml

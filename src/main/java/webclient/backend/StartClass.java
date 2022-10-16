@@ -10,7 +10,6 @@ import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import webclient.backend.configuration.db.hibernate.HibernateConfig;
 import webclient.backend.model.Clients;
 
@@ -19,8 +18,8 @@ import java.util.Iterator;
 import java.util.Map;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"webclient.backend.*"})
-@ConfigurationPropertiesScan("webclient.backend.configuration")
+@ComponentScan(basePackages = {"webclient.*"})
+@ConfigurationPropertiesScan(basePackages = {"webclient.backend.configuration", "webclient.backend.service"})
 @EntityScan(basePackages = "webclient.backend.*")
 //@EnableJpaRepositories( basePackages = "webclient.backend.repositories")
 @Slf4j
