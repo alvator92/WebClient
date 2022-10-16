@@ -1,0 +1,46 @@
+postgre:                                                                    # Подключение к БД
+  name: org.postgresql.Driver
+  url: jdbc:postgresql://127.0.0.1:5432/aposs?PrepareThreshold=0
+  user: superuser
+  password: qwe123_                                                         #добавить сокрытие пароля
+  database: aposs
+  minPoolSize: 20
+  maxPoolSize: 60
+  maxIdleTime: 5
+  maxStatements: 1000
+  maxStatementsPerConnection: 100
+  maxIdleTimeExcessConnection: 10000
+hibernate:
+  dialect: org.hibernate.dialect.PostgreSQLDialect
+  showSql: true
+  ddlAuto: none
+
+#logging:
+#  config: file:/app/config/logback/logback.xml
+spring:
+  datasource:
+    hikari:
+      driverClassName: org.postgresql.Driver
+      jdbc-url: jdbc:postgresql://127.0.0.1:5432/aposs?PrepareThreshold=0
+      username: superuser
+      password: qwe123_
+      maximum-pool-size: 10
+      minimum-idle: 5
+      pool-name: master-pool
+    pool:
+      initial-size: 5
+      min-idle: 5
+      max-idle: 10
+  jpa:
+    properties:
+      hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+      hibernate.format_sql: true
+      hibernate.show_slq: false
+      hibernate.use_sql_comments: true
+      hibernate.physical_naming_strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  liquibase:
+    change-log: 'classpath:db/changelog/db.changelog-master.yaml'
+    enabled: true
+  output:
+    ansi:
+      console-available: true
